@@ -1,38 +1,38 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net8.0": []
   },
   "packageFolders": {
-    "/Users/grzegorzszczesny/.nuget/packages/": {}
+    "C:\\Users\\s27881\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/grzegorzszczesny/RiderProjects/APBD2/APBD2/APBD2.csproj",
+      "projectUniqueName": "C:\\Users\\s27881\\Source\\Repos\\grzegorzszczesny794\\APBD2\\APBD2\\APBD2.csproj",
       "projectName": "APBD2",
-      "projectPath": "/Users/grzegorzszczesny/RiderProjects/APBD2/APBD2/APBD2.csproj",
-      "packagesPath": "/Users/grzegorzszczesny/.nuget/packages/",
-      "outputPath": "/Users/grzegorzszczesny/RiderProjects/APBD2/APBD2/obj/",
+      "projectPath": "C:\\Users\\s27881\\Source\\Repos\\grzegorzszczesny794\\APBD2\\APBD2\\APBD2.csproj",
+      "packagesPath": "C:\\Users\\s27881\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\s27881\\Source\\Repos\\grzegorzszczesny794\\APBD2\\APBD2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/grzegorzszczesny/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\s27881\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
-        "/Users/grzegorzszczesny/.dotnet/library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://gitlab.com/api/v4/projects/20357909/packages/nuget/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -44,13 +44,12 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -67,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/grzegorzszczesny/.dotnet/sdk/9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
