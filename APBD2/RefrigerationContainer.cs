@@ -1,6 +1,7 @@
 ﻿namespace APBD2
 {
-    internal sealed class RefrigerationContainer : ContainerCargo, IHazarNotifier
+    internal sealed class RefrigerationContainer : ContainerCargo
+                                                , IHazarNotifier
     {
         private ProductType _productType;
         public ProductType ProductType
@@ -14,7 +15,13 @@
             }
         }
 
-        public required double Temperature { get; set; }  
+        public required double Temperature { get; set; }
+
+        public override void GetInformaction()
+        {
+            base.GetInformaction();
+            Console.WriteLine($"ProductType: {nameof(ProductType)}");
+        }
 
         public void Notify(string message)
         {

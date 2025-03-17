@@ -21,6 +21,14 @@
 
             base.AddWeight(weight);
         }
+         
+        public override string GetCargoSerialNumberPrefix() => "L";
+
+        public override void GetInformaction()
+        {
+            base.GetInformaction();
+            Console.WriteLine($"{(IsDangerous ? "Niebezpieczny" : "Bezpieczny")}");
+        }
 
         public void Notify(string message)
         {

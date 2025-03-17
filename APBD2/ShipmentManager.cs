@@ -2,6 +2,18 @@
 {
     internal sealed class ShipmentManager
     {
+        public List<ContainerShip> AvalaibleShips { get; set; } = new();
+
+        public void ShowAvalaibleShips()
+        {
+            Console.WriteLine("Container ships");
+
+            if (!AvalaibleShips.Any())
+                Console.WriteLine("Empty");
+
+            AvalaibleShips.ForEach(c => c.GetInformation());
+        }
+
         public void AssignContainerToShip(ContainerShip ship, ContainerCargo cargo) => ship.CargoList.Add(cargo);
         public void AssignContainersToShip(ContainerShip ship, IEnumerable<ContainerCargo> cargos) => ship.CargoList.AddRange(cargos);
 
@@ -35,7 +47,9 @@
             shipTo.CargoList.Add(container);
         }
 
-        public void GetContainerInfo(ContainerCargo cargo) { 
+        public void GetContainerInfo(ContainerCargo cargo) {
+            
+
         }
 
     }

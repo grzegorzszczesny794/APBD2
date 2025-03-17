@@ -1,12 +1,12 @@
 ﻿namespace APBD2
 {
-    internal class ContainerCargo
+    internal abstract class ContainerCargo
     {
         public required double CargoWeight { get; set; }
         public required int Height { get; set; }
         public required double Weight { get; set; }
         public required int Depth { get; set; }
-        public required string SerialNumber { get; set; }
+        public string SerialNumber { get; set; }
         public required double MaxWeight { get; set; }
 
         public virtual void EmptyCargo() => CargoWeight = 0;
@@ -16,6 +16,10 @@
             
             CargoWeight += weight;
         }
+
+        public ContainerCargo() => SerialNumber = $"KON-{GetCargoSerialNumberPrefix() + "-" + new Random().Next()}";
+
+        public virtual string  GetCargoSerialNumberPrefix() => "C";
 
         public virtual void GetInformaction()
         {
