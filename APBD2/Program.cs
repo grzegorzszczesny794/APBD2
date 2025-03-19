@@ -1,42 +1,49 @@
 ﻿
 using APBD2;
 
-public class Program
+var gasolineContainer = new GasolineContainerCargo()
 {
-    public static void Main(string[] args)
-    {
+    CargoWeight = 2,
+    Depth = 3,
+    Height = 4,
+    MaxWeight = 5,
+    OwnWeight = 23
+};
 
-        var shipmentManager = new ShipmentManager();
+var refrigarationContainer = new RefrigerationContainer()
+{
+    Depth = 3,
+    Height = 4,
+    MaxWeight = 23,
+    CargoWeight = 0,
+    OwnWeight = 10,
+    Temperature = 22
+};
 
-        Console.WriteLine("Shipment manager: ");
+refrigarationContainer.ProductType = ProductType.Bananas;
 
-        while (true) {
+gasolineContainer.GetInformaction();
+gasolineContainer.AddWeight(2);
 
-            shipmentManager.ShowAvalaibleShips();
+var liquidContainer = new LiquidContainerCargo()
+{
+    Depth = 2,
+    Height = 23,
+    IsDangerous = true,
+    OwnWeight = 12,
+    MaxWeight = 12,
+};
 
-            var line = Console.ReadLine() ?? string.Empty;
+liquidContainer.AddWeight(3);
 
-            var commands = line.Split(' ').ToList();
+var ship = new ContainerShip()
+{
+    MaxAmountOfContainer = 10,
+    MaxSpeed = 23,
+    MaxWeightOfContainer = 1000,
+};
 
-            if (!commands.Any())
-            {
-                Console.WriteLine("Not commands found.");
-                continue;
-            }    
+ship.AddContainer(liquidContainer);
+ship.AddContainers([gasolineContainer, refrigarationContainer]);
 
-            switch (commands[0])
-            {
-                case CommandEnum.REPLACE_CONTAINER_FROM_SHIP:
-                    break;
-                case CommandEnum.CREATE_CONTAINER:
-                    break;
-                default:
-                    Console.WriteLine("Unknown command"); 
-            }
-
-        }
-
-    }
-}
-
-
+ship.GetInformation();

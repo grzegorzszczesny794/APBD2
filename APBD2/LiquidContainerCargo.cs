@@ -7,16 +7,16 @@
 
         public override void AddWeight(double weight)
         {
-            if (((MaxWeight * 0.5) < weight + CargoWeight) && IsDangerous)
+            if (((MaxWeight * 0.5) < (weight + CargoWeight)) && IsDangerous)
             {
-                Notify("Materiał jest niebezpieczny i przekroczył 50% dozwolonej wagi.");
-                return;
+                Notify($"Materiał jest niebezpieczny i przekroczył 50% dozwolonej wagi, kontener o numerze: {SerialNumber}");
+                throw new OverfillException($"Cannot load {weight}kg. Maximum allowed is {MaxWeight}kg.");
             }
 
-            if ((MaxWeight * 0.9) < weight + CargoWeight)
+            if ((MaxWeight * 0.9) < (weight + CargoWeight))
             {
-                Notify("Materiał jest bezpieczny i przekroczył 90% dozwolonej wagi.");
-                return;
+                Notify($"Materiał jest bezpieczny i przekroczył 90% dozwolonej wagi, kontener o numerze: {SerialNumber}");
+                throw new OverfillException();
             }
 
             base.AddWeight(weight);

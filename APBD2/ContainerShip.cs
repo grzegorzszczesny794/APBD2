@@ -7,6 +7,45 @@
         public int MaxAmountOfContainer { get; set; }   
         public double MaxWeightOfContainer { get; set; }
 
+        public double ContainerWeight { get => CargoList.Sum(x => x.OwnWeight + x.CargoWeight); }
+
+        public void AddContainer(ContainerCargo cargo)
+        {
+            if ((cargo.CargoWeight + cargo.OwnWeight + ContainerWeight) > MaxWeightOfContainer)
+                throw new OverfillException("Zbyt wielka waga!");
+
+            CargoList.Add(cargo);
+        }
+
+        public void Empty() => CargoList.Clear();
+
+        public void DeleteContainer(ContainerCargo cargo) => CargoList.Remove(cargo);
+
+        public void ReplaceContainer(string containerNumber, ContainerCargo cargo) {
+
+            var foundContainer = CargoList.FirstOrDefault(x => x.SerialNumber == containerNumber);
+
+            if (foundContainer is null)
+                throw new Exception();
+
+            CargoList.Remove(foundContainer);
+            CargoList.Add(cargo);
+        }
+
+        public void MoveFromShipToAnotherShip(ContainerShip shipTo, ContainerCargo container)
+        {
+            var foundContainer = CargoList.FirstOrDefault(x => x.SerialNumber == container.SerialNumber);
+
+            if (foundContainer is null)
+                throw new Exception();
+
+            CargoList.Remove(container);
+
+            shipTo.CargoList.Add(container);
+        }
+
+        public void AddContainers(IEnumerable<ContainerCargo> containers) => CargoList.AddRange(containers);
+
         public void GetInformation()
         {
             Console.WriteLine($"Container ship information");
