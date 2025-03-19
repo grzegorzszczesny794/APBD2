@@ -46,4 +46,11 @@ var ship = new ContainerShip()
 ship.AddContainer(liquidContainer);
 ship.AddContainers([gasolineContainer, refrigarationContainer]);
 
+var ship2 = new ContainerShip()
+{
+    MaxAmountOfContainer = 2,
+    MaxSpeed = 2,
+    MaxWeightOfContainer = 3
+};
+
 ship.GetInformation();

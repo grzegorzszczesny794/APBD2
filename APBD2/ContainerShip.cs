@@ -11,6 +11,9 @@
 
         public void AddContainer(ContainerCargo cargo)
         {
+            if (CargoList.Count + 1 > MaxAmountOfContainer)
+                throw new OverfillException("Zbyt wiele kontenerów");
+
             if ((cargo.CargoWeight + cargo.OwnWeight + ContainerWeight) > MaxWeightOfContainer)
                 throw new OverfillException("Zbyt wielka waga!");
 
@@ -29,7 +32,7 @@
                 throw new Exception();
 
             CargoList.Remove(foundContainer);
-            CargoList.Add(cargo);
+            AddContainer(cargo);
         }
 
         public void MoveFromShipToAnotherShip(ContainerShip shipTo, ContainerCargo container)
@@ -41,7 +44,7 @@
 
             CargoList.Remove(container);
 
-            shipTo.CargoList.Add(container);
+            shipTo.AddContainer(container);
         }
 
         public void AddContainers(IEnumerable<ContainerCargo> containers) => CargoList.AddRange(containers);
