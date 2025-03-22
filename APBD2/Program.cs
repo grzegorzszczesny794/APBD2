@@ -43,3 +43,6 @@ ship.ReplaceContainer(refrigarationContainer.SerialNumber, gasolineContainer);
 ship2.MoveFromShipToAnotherShip(ship, gasolineContainer2);
 
 ship.GetInformation();
+
+ship.Empty();
+ship.GetInformation();
