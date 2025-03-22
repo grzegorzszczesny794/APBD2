@@ -2,6 +2,8 @@
 {
     internal abstract class ContainerCargo
     {
+        private static int IdentityCounter = 1;
+
         public double CargoWeight { get; set; } = 0;
         public int Height { get; set; }
         public double OwnWeight { get; set; } = 0;
@@ -24,7 +26,8 @@
             Depth = depth;
             MaxWeight = maxWeight;
 
-            SerialNumber = $"KON-{GetCargoSerialNumberPrefix() + "-" + new Random().Next()}";
+            SerialNumber = $"KON-{GetCargoSerialNumberPrefix() + "-" + IdentityCounter}";
+            IdentityCounter++;
         }
 
         protected virtual string GetCargoSerialNumberPrefix() => "C";

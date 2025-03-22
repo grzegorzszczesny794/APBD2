@@ -14,11 +14,14 @@ var refrigarationContainer = new RefrigerationContainer(12, 12.0, 2, 30.0, Produ
 refrigarationContainer.ProductType = ProductType.Bananas;
 refrigarationContainer.AddWeight(12, ProductType.Bananas);
 
-refrigarationContainer.Temperature = 23;
-
 var liquidContainer = new LiquidContainerCargo(12, 12.4, 2, 38.0, true);
 liquidContainer.AddWeight(3);
 liquidContainer.EmptyCargo();
+
+try
+{
+    liquidContainer.AddWeight(2323.0);
+} catch { }
 
 liquidContainer.AddWeight(2);
 
