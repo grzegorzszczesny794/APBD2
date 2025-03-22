@@ -714,3 +714,71 @@ obj/
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudio,dotnetcore,aspnetcore
+
+# VS IDE files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+.vscode/
+
+# Cache & History files
+.futdcache.v*
+.dbtcache.v*
+*.cache
+*.[Cc]ache
+VSWorkspaceState.json
+DocumentLayout*.json
+
+# Binary files and build outputs
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Binary file index
+FileContentIndex/
+*.vsidx
+
+# NuGet
+*.nuget.cache
+*.nuget.props
+*.nuget.targets
+project.nuget.cache
+project.assets.json
+*.nupkg
+
+# Project metadata 
+*.metadata.v*.bin
+*.projects.v*.bin
+*.strings.v*.bin
+*.sqlite
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# .NET specific
+*.dll
+*.exe
+*.pdb
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+
