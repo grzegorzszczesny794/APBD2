@@ -21,7 +21,8 @@ liquidContainer.EmptyCargo();
 try
 {
     liquidContainer.AddWeight(2323.0);
-} catch { }
+}
+catch { }
 
 liquidContainer.AddWeight(2);
 
