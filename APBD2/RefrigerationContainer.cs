@@ -33,19 +33,16 @@
 
         public void AddWeight(double weight, ProductType productType)
         {
-            if (Temperature < ProductTemperature.GetTemperature(productType))
-                throw new Exception("Temperatura za niska");
-
             if (productType != _productType)
                 throw new Exception("Produkt nieprawidłowy");
+
+            if (Temperature < ProductTemperature.GetTemperature(productType))
+                throw new Exception("Temperatura za niska");
 
             base.AddWeight(weight);
         }
 
-        public override void AddWeight(double weight)
-        {
-            throw new NotImplementedException();
-        }
+        public override void AddWeight(double weight) => throw new NotImplementedException();
 
         protected override string GetCargoSerialNumberPrefix() => "R";
 
