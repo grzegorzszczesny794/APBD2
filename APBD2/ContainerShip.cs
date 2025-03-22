@@ -2,7 +2,7 @@
 {
     internal sealed class ContainerShip : IInformation
     {
-        public List<ContainerCargo> CargoList { get; set; } = new();
+        public List<ContainerCargo> CargoList { get; set; } 
         public int MaxSpeed { get; set; }
         public int MaxAmountOfContainer { get; set; }   
         public double MaxWeightOfContainer { get; set; }
@@ -14,6 +14,7 @@
             MaxSpeed = maxSpeed;
             MaxWeightOfContainer = maxWeightOfContainers;
             MaxAmountOfContainer = maxAmountOfContainers;
+            CargoList = new();
         }
 
         public void AddContainer(ContainerCargo cargo)
@@ -36,7 +37,7 @@
             var foundContainer = CargoList.FirstOrDefault(x => x.SerialNumber == containerNumber);
 
             if (foundContainer is null)
-                throw new Exception();
+                throw new Exception("Nie odnaleziono kontenera o podanym numerze!");
 
             CargoList.Remove(foundContainer);
             AddContainer(cargo);
@@ -47,7 +48,7 @@
             var foundContainer = CargoList.FirstOrDefault(x => x.SerialNumber == container.SerialNumber);
 
             if (foundContainer is null)
-                throw new Exception();
+                throw new Exception("Nie odnaleziono kontenera o podanym numerze!");
 
             CargoList.Remove(container);
 
