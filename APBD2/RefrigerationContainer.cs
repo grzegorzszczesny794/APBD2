@@ -1,9 +1,23 @@
 ﻿namespace APBD2
 {
     internal sealed class RefrigerationContainer : ContainerCargo
-                                                , IHazarNotifier
     {
         private ProductType _productType;
+
+        public RefrigerationContainer(int height
+                                    , double ownWeight
+                                    , int depth
+                                    , double maxWeight
+                                    , ProductType productType
+                                    , int temperatura) : base(height, ownWeight, depth, maxWeight)
+        {
+            if (temperatura < ProductTemperature.GetTemperature(productType))
+                throw new Exception("Temperatura nieprawidłowa");
+
+            Temperature = temperatura;
+            _productType = productType;
+        }
+
         public  ProductType ProductType
         {
             get { return _productType; }
@@ -15,7 +29,7 @@
             }
         }
 
-        public double Temperature { get; set; } = 0;
+        public double Temperature { get; }
 
         public void AddWeight(double weight, ProductType productType)
         {
@@ -25,18 +39,21 @@
             if (productType != _productType)
                 throw new Exception("Produkt nieprawidłowy");
 
-            AddWeight(weight);
+            base.AddWeight(weight);
         }
 
-        public override string GetCargoSerialNumberPrefix() => "R";
+        public override void AddWeight(double weight)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override string GetCargoSerialNumberPrefix() => "R";
 
         public override void GetInformaction()
         {
             base.GetInformaction();
-            Console.WriteLine($"ProductType: {nameof(ProductType)}");
+            Console.WriteLine($"Typ produktu: {nameof(ProductType)}");
+            Console.WriteLine($"Temperatura : {Temperature}");
         }
-
-        public void Notify(string message) => Console.WriteLine(message + $"Numer kontenera: {SerialNumber}");
-
     }
 }

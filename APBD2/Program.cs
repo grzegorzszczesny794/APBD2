@@ -1,56 +1,41 @@
 ﻿
 using APBD2;
 
-var gasolineContainer = new GasolineContainerCargo()
-{
-    CargoWeight = 2,
-    Depth = 3,
-    Height = 4,
-    MaxWeight = 5,
-    OwnWeight = 23
-};
+var gasolineContainer = new GasolineContainerCargo(12, 12.0, 2, 30.0);
+var gasolineContainer2 = new GasolineContainerCargo(12, 11.0, 2, 24.0);
 
-var refrigarationContainer = new RefrigerationContainer()
-{
-    Depth = 3,
-    Height = 4,
-    MaxWeight = 23,
-    CargoWeight = 0,
-    OwnWeight = 10,
-    Temperature = 22
-};
-
-refrigarationContainer.ProductType = ProductType.Bananas;
-
+gasolineContainer.AddWeight(23.0);
+gasolineContainer2.AddWeight(21.0);
 gasolineContainer.GetInformaction();
 gasolineContainer.AddWeight(2);
 
-var liquidContainer = new LiquidContainerCargo()
-{
-    Depth = 2,
-    Height = 23,
-    IsDangerous = true,
-    OwnWeight = 12,
-    MaxWeight = 12,
-};
+var refrigarationContainer = new RefrigerationContainer(12, 12.0, 2, 30.0, ProductType.Bananas, 16);
 
+refrigarationContainer.ProductType = ProductType.Bananas;
+refrigarationContainer.AddWeight(12, ProductType.Bananas);
+
+refrigarationContainer.Temperature = 23;
+
+var liquidContainer = new LiquidContainerCargo(12, 12.4, 2, 38.0, true);
 liquidContainer.AddWeight(3);
+liquidContainer.EmptyCargo();
 
-var ship = new ContainerShip()
-{
-    MaxAmountOfContainer = 10,
-    MaxSpeed = 23,
-    MaxWeightOfContainer = 1000,
-};
+liquidContainer.AddWeight(2);
+
+var ship = new ContainerShip(12, 10, 602.0);
 
 ship.AddContainer(liquidContainer);
 ship.AddContainers([gasolineContainer, refrigarationContainer]);
 
-var ship2 = new ContainerShip()
-{
-    MaxAmountOfContainer = 2,
-    MaxSpeed = 2,
-    MaxWeightOfContainer = 3
-};
+var ship2 = new ContainerShip(43, 23, 122.3);
+ship2.AddContainer(gasolineContainer2);
+
+ship2.GetInformation();
+ship.GetInformation();
+
+ship.DeleteContainer(gasolineContainer);
+ship.ReplaceContainer(refrigarationContainer.SerialNumber, gasolineContainer);
+
+ship2.MoveFromShipToAnotherShip(ship, gasolineContainer2);
 
 ship.GetInformation();

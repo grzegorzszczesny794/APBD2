@@ -9,6 +9,13 @@
 
         public double ContainerWeight { get => CargoList.Sum(x => x.OwnWeight + x.CargoWeight); }
 
+        public ContainerShip(int maxSpeed, int maxAmountOfContainers, double maxWeightOfContainers)
+        {
+            MaxSpeed = maxSpeed;
+            MaxWeightOfContainer = maxWeightOfContainers;
+            MaxAmountOfContainer = maxAmountOfContainers;
+        }
+
         public void AddContainer(ContainerCargo cargo)
         {
             if (CargoList.Count + 1 > MaxAmountOfContainer)

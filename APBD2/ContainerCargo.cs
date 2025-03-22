@@ -3,11 +3,11 @@
     internal abstract class ContainerCargo
     {
         public double CargoWeight { get; set; } = 0;
-        public required int Height { get; set; }
+        public int Height { get; set; }
         public double OwnWeight { get; set; } = 0;
-        public required int Depth { get; set; }
+        public int Depth { get; set; }
         public string SerialNumber { get; init; }
-        public required double MaxWeight { get; set; }
+        public double MaxWeight { get; set; }
 
         public virtual void EmptyCargo() => CargoWeight = 0;
         public virtual void AddWeight(double weight)
@@ -17,9 +17,17 @@
             CargoWeight += weight;
         }
 
-        public ContainerCargo() => SerialNumber = $"KON-{GetCargoSerialNumberPrefix() + "-" + new Random().Next()}";
+        public ContainerCargo(int height, double ownWeight, int depth, double maxWeight)
+        {
+            Height = height;
+            OwnWeight = ownWeight;
+            Depth = depth;
+            MaxWeight = maxWeight;
 
-        public virtual string GetCargoSerialNumberPrefix() => "C";
+            SerialNumber = $"KON-{GetCargoSerialNumberPrefix() + "-" + new Random().Next()}";
+        }
+
+        protected virtual string GetCargoSerialNumberPrefix() => "C";
 
         public virtual void GetInformaction()
         {

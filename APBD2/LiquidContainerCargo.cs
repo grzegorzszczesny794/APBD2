@@ -3,7 +3,17 @@
     internal sealed class LiquidContainerCargo : ContainerCargo
                                           , IHazarNotifier
     {
-        public required bool IsDangerous { get; set; }
+
+        public bool IsDangerous { get; set; }
+
+        public LiquidContainerCargo(int height
+                                  , double ownWeight
+                                  , int depth
+                                  , double maxWeight
+                                  , bool isDangerous) : base(height, ownWeight, depth, maxWeight)
+        {
+            IsDangerous = isDangerous;
+        }
 
         public override void AddWeight(double weight)
         {
@@ -21,20 +31,17 @@
 
             base.AddWeight(weight);
         }
-         
-        public override string GetCargoSerialNumberPrefix() => "L";
+
+        protected override string GetCargoSerialNumberPrefix() => "L";
 
         public override void GetInformaction()
         {
             base.GetInformaction();
             Console.WriteLine($"{(IsDangerous ? "Niebezpieczny" : "Bezpieczny")}");
+            Console.WriteLine($"Typ kontenera: Płyn");
         }
 
-        public void Notify(string message)
-        {
-           Console.WriteLine(message);
-        }
-
+        public void Notify(string message) => Console.WriteLine($"{message}, Numer: {SerialNumber}");
 
     }
 }
